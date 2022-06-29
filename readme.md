@@ -1,10 +1,13 @@
+# sansverse by sans - personal website made with Next.js Notion Starter Kit
+### Preview of the light mode and the dark mode
 <p align="center">
-  <a href="https://transitivebullsh.it/nextjs-notion-starter-kit">
+  <a href="https://www.sansverse.co/">
     <img alt="Example article page" src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/721669a9-0810-4c55-b179-b24b090b1b0f/Screen_Shot_2022-06-29_at_5.21.54_PM.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220629%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220629T082218Z&X-Amz-Expires=86400&X-Amz-Signature=2d6091aa7bb00b6591161d27756a805200a26be5598d78256c7e5c82b84fa997&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Screen%2520Shot%25202022-06-29%2520at%25205.21.54%2520PM.png%22&x-id=GetObject" width="689">
   </a>
+    <a href="https://www.sansverse.co/">
+    <img alt="Example article page" src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/20a90209-7d99-4d5e-964d-a685659bb63d/Screen_Shot_2022-06-29_at_5.24.08_PM.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220629%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220629T083551Z&X-Amz-Expires=86400&X-Amz-Signature=736926dde86b2179db1c719fa933a582d6c9aa4400baa9190d4dab428e18b10a&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Screen%2520Shot%25202022-06-29%2520at%25205.24.08%2520PM.png%22&x-id=GetObject" width="689">
+  </a>
 </p>
-
-# Sansverse Website made with Next.js Notion Starter Kit by transitivebullsh.it on github
 
 > The perfect starter kit for building websites with Next.js and Notion.
 
@@ -182,4 +185,4 @@ Thank you so much Travis Fischer for making this open source!
 
 MIT © [Travis Fischer](https://transitivebullsh.it)
 
-Support my open source work by <a href="https://twitter.com/transitive_bs">following me on twitter <img src="https://storage.googleapis.com/saasify-assets/twitter-logo.svg" alt="twitter" height="24px" align="center"></a>
+Support Travis Fischer's open source work by <a href="https://twitter.com/transitive_bs">following me on twitter <img src="https://storage.googleapis.com/saasify-assets/twitter-logo.svg" alt="twitter" height="24px" align="center"></a>
