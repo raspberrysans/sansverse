@@ -25,8 +25,8 @@ export default siteConfig({
 
   // default notion icon and cover images for site-wide consistency (optional)
   // page-specific values will override these site-wide defaults
-  defaultPageIcon: null,
-  defaultPageCover: null,
+  defaultPageIcon: 'https://cdn.glitch.com/605e2a51-d45f-4d87-a285-9410ad350515%2FILLO_Diamond_L_Solo.gif?v=1618852786776',
+  defaultPageCover: 'https://images.prismic.io/glitch-cms/e5e2a334-2a04-4269-ba4f-f12feda68871_Screen+Shot+2022-06-02+at+4.45.47+PM.png',
   defaultPageCoverPosition: 0.5,
 
   // whether or not to enable support for LQIP preview images (optional)
