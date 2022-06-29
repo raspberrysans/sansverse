@@ -1,10 +1,10 @@
 <p align="center">
   <a href="https://transitivebullsh.it/nextjs-notion-starter-kit">
-    <img alt="Example article page" src="https://user-images.githubusercontent.com/552829/160132094-12875e09-41ec-450a-80fc-ae8cd488129d.jpg" width="689">
+    <img alt="Example article page" src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/721669a9-0810-4c55-b179-b24b090b1b0f/Screen_Shot_2022-06-29_at_5.21.54_PM.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220629%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220629T082218Z&X-Amz-Expires=86400&X-Amz-Signature=2d6091aa7bb00b6591161d27756a805200a26be5598d78256c7e5c82b84fa997&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Screen%2520Shot%25202022-06-29%2520at%25205.21.54%2520PM.png%22&x-id=GetObject" width="689">
   </a>
 </p>
 
-# Next.js Notion Starter Kit
+# Sansverse Website made with Next.js Notion Starter Kit by transitivebullsh.it on github
 
 > The perfect starter kit for building websites with Next.js and Notion.
 
@@ -12,7 +12,7 @@
 
 ## Intro
 
-This repo is what I use to power my personal blog and portfolio site [transitivebullsh.it](https://transitivebullsh.it).
+Check out my personal blog and portfolio site [sansverse.co](https://www.sansverse.co/).
 
 It uses Notion as a CMS, [react-notion-x](https://github.com/NotionX/react-notion-x), [Next.js](https://nextjs.org/), and [Vercel](https://vercel.com).
 
@@ -34,7 +34,7 @@ It uses Notion as a CMS, [react-notion-x](https://github.com/NotionX/react-notio
 ## Demos
 
 - [Default demo](https://nextjs-notion-starter-kit.transitivebullsh.it) - Deployed from the `main` branch
-- [My site](https://transitivebullsh.it) - Deployed from the `transitive-bullshit` branch
+- [sansverse.co - my site](https://www.sansverse.co/) - Deployed from the `sansverse` branch
 
 ## Setup
 
@@ -175,9 +175,8 @@ If you're using Redis, analytics, or any other feature which requires environmen
 
 If you want to test your redis builds with GitHub Actions, then you'll need to edit the [default build action](./.github/workflows/build.yml) to add `REDIS_HOST` and `REDIS_PASSWORD`. Here is an [example from my personal branch](https://github.com/transitive-bullshit/nextjs-notion-starter-kit/blob/transitive-bullshit/.github/workflows/build.yml#L17-L21). You'll also need to add these environment variables to your GitHub repo as [repository secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets).
 
-## Contributing
-
-See the [contribution guide](contributing.md) and join our amazing list of [contributors](https://github.com/transitive-bullshit/nextjs-notion-starter-kit/graphs/contributors)!
+## Credit
+Thank you so much Travis Fischer for making this open source!
 
 ## License
 
