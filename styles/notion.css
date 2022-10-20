@@ -44,8 +44,10 @@
   margin: 0 auto;
   font-weight: bold;
   font-family: 'Helvetica Neue';
-  letter-spacing: 3px;
+  letter-spacing: 1px;
   font-style: italic;
+  white-space: break-spaces;
+
 }
 
 .notion-nav-header-rhs {
