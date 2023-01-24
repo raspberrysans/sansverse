@@ -31,6 +31,7 @@ import { Footer } from './Footer'
 import { NotionPageHeader } from './NotionPageHeader'
 
 import styles from './styles.module.css'
+// import { RightHandDrawer } from './RightHandDrawer'
 
 // -----------------------------------------------------------------------------
 // dynamic imports for optional components
@@ -189,6 +190,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   const keys = Object.keys(recordMap?.block || {})
   const block = recordMap?.block?.[keys[0]]?.value
+  console.log(recordMap?.block?.[keys[0]])
 
   // const isRootPage =
   //   parsePageId(block?.id) === parsePageId(site?.rootNotionPageId)
@@ -197,7 +199,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   const showTableOfContents = !!isBlogPost
   const minTableOfContentsItems = 3
-
   const pageAside = React.useMemo(
     () => (
       <PageAside block={block} recordMap={recordMap} isBlogPost={isBlogPost} />
@@ -260,6 +261,14 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
       {isLiteMode && <BodyClassName className='notion-lite' />}
       {isDarkMode && <BodyClassName className='dark-mode' />}
+
+      {/* {isBlogPost && (
+        <RightHandDrawer
+          block={block}
+          recordMap={recordMap}
+          isBlogPost={isBlogPost}
+        />
+      )} */}
 
       <NotionRenderer
         bodyClassName={cs(

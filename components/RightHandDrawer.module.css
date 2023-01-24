@@ -1,0 +1,13 @@
+.drawerWrapper {
+  position: absolute;
+  z-index: 1;
+  top: 40vh;
+  width: 140px;
+  height: 100%;
+}
+
+@media (max-width: 1360px) {
+  .drawerWrapper {
+    display: none;
+  }
+}
