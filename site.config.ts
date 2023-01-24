@@ -6,15 +6,15 @@ export default siteConfig({
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
-  rootNotionSpaceId: null,
+  rootNotionSpaceId: '"4b0aaf2dee0a40b98e454368314c0bf8"',
 
   // basic site info (required)
-  name: 'sansverse by sans',
+  name: 'Sansverse by Sans',
   domain: 'sansverse.co',
   author: 'Sans Bhatia',
 
   // open graph metadata (optional)
-  description: 'sans personal website/portfolio',
+  description: 'Welcome to Sansverse by Sans',
 
   // social usernames (optional)
   twitter: 'sanseuyt',

@@ -6,7 +6,9 @@ import { resolveNotionPage } from 'lib/resolve-notion-page'
 import { PageProps, Params } from 'lib/types'
 import { NotionPage } from 'components'
 
-export const getStaticProps: GetStaticProps<PageProps, Params> = async (context) => {
+export const getStaticProps: GetStaticProps<PageProps, Params> = async (
+  context
+) => {
   const rawPageId = context.params.pageId as string
 
   try {
@@ -42,10 +44,12 @@ export async function getStaticPaths() {
     fallback: true
   }
 
-  console.log(staticPaths.paths)
+  // console.log(staticPaths.paths)
   return staticPaths
 }
 
 export default function NotionDomainDynamicPage(props) {
+  // console.log(props.recordMap.block)
+
   return <NotionPage {...props} />
 }
