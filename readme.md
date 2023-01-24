@@ -1,5 +1,7 @@
 # sansverse by sans - personal website made with Next.js Notion Starter Kit
+
 ### Preview of the light mode and the dark mode
+
 <p align="center">
   <a href="https://www.sansverse.co/">
     <img alt="Example article page" src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/721669a9-0810-4c55-b179-b24b090b1b0f/Screen_Shot_2022-06-29_at_5.21.54_PM.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220629%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220629T082218Z&X-Amz-Expires=86400&X-Amz-Signature=2d6091aa7bb00b6591161d27756a805200a26be5598d78256c7e5c82b84fa997&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Screen%2520Shot%25202022-06-29%2520at%25205.21.54%2520PM.png%22&x-id=GetObject" width="689">
@@ -47,8 +49,8 @@ This project requires a recent version of Node.js (>= 14.17).
 
 1. Fork / clone this repo
 2. Change a few values in [site.config.ts](./site.config.ts)
-3. `npm install`
-4. `npm run dev` to test locally
+3. `yarn install`
+4. `yarn dev` to test locally
 5. `npm run deploy` to deploy to vercel 💪
 
 I tried to make configuration as easy as possible — All you really need to do to get started is edit `rootNotionPageId`.
@@ -179,6 +181,7 @@ If you're using Redis, analytics, or any other feature which requires environmen
 If you want to test your redis builds with GitHub Actions, then you'll need to edit the [default build action](./.github/workflows/build.yml) to add `REDIS_HOST` and `REDIS_PASSWORD`. Here is an [example from my personal branch](https://github.com/transitive-bullshit/nextjs-notion-starter-kit/blob/transitive-bullshit/.github/workflows/build.yml#L17-L21). You'll also need to add these environment variables to your GitHub repo as [repository secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets).
 
 ## Credit
+
 Thank you so much Travis Fischer for making this open source!
 
 ## License
