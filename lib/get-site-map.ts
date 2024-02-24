@@ -1,8 +1,7 @@
 import * as config from './config'
 import * as types from './types'
 
-import { getAllPagesInSpace, uuidToId } from 'notion-utils'
-
+import { getAllPagesInSpace } from 'notion-utils'
 import { getCanonicalPageId } from './get-canonical-page-id'
 import { includeNotionIdInUrls } from './config'
 import { notion } from './notion-api'
