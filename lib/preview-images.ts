@@ -1,13 +1,13 @@
-import got from 'got'
-import lqip from 'lqip-modern'
-import pMap from 'p-map'
-import pMemoize from 'p-memoize'
 import { ExtendedRecordMap, PreviewImage, PreviewImageMap } from 'notion-types'
+import { defaultPageCover, defaultPageIcon } from './config'
 import { getPageImageUrls, normalizeUrl } from 'notion-utils'
 
-import { defaultPageIcon, defaultPageCover } from './config'
 import { db } from './db'
+import got from 'got'
+import lqip from 'lqip-modern'
 import { mapImageUrl } from './map-image-url'
+import pMap from 'p-map'
+import pMemoize from 'p-memoize'
 
 export async function getPreviewImageMap(
   recordMap: ExtendedRecordMap
@@ -51,7 +51,6 @@ async function createPreviewImage(
 
     const { body } = await got(url, { responseType: 'buffer' })
     const result = await lqip(body)
-    console.log('lqip', { ...result.metadata, url, cacheKey })
 
     const previewImage = {
       originalWidth: result.metadata.originalWidth,

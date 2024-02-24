@@ -1,36 +1,34 @@
 import * as React from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
-import dynamic from 'next/dynamic'
-import cs from 'classnames'
-import { useRouter } from 'next/router'
-import { useSearchParam } from 'react-use'
-import BodyClassName from 'react-body-classname'
-import { PageBlock } from 'notion-types'
-
-import TweetEmbed from 'react-tweet-embed'
-
-// core notion renderer
-import { NotionRenderer } from 'react-notion-x'
+import * as config from 'lib/config'
+import * as types from 'lib/types'
 
 // utils
-import { getBlockTitle, getPageProperty, formatDate } from 'notion-utils'
-import { mapPageUrl, getCanonicalPageUrl } from 'lib/map-page-url'
-import { mapImageUrl } from 'lib/map-image-url'
-import { searchNotion } from 'lib/search-notion'
-import { useDarkMode } from 'lib/use-dark-mode'
-import * as types from 'lib/types'
-import * as config from 'lib/config'
+import { formatDate, getBlockTitle, getPageProperty } from 'notion-utils'
+import { getCanonicalPageUrl, mapPageUrl } from 'lib/map-page-url'
 
+import BodyClassName from 'react-body-classname'
+import { Footer } from './Footer'
+import Image from 'next/image'
+import Link from 'next/link'
 // components
 import { Loading } from './Loading'
-import { Page404 } from './Page404'
-import { PageHead } from './PageHead'
-import { PageAside } from './PageAside'
-import { Footer } from './Footer'
 import { NotionPageHeader } from './NotionPageHeader'
-
+// core notion renderer
+import { NotionRenderer } from 'react-notion-x'
+import { Page404 } from './Page404'
+import { PageAside } from './PageAside'
+import { PageBlock } from 'notion-types'
+import { PageHead } from './PageHead'
+import TweetEmbed from 'react-tweet-embed'
+import cs from 'classnames'
+import dynamic from 'next/dynamic'
+import { mapImageUrl } from 'lib/map-image-url'
+import { searchNotion } from 'lib/search-notion'
 import styles from './styles.module.css'
+import { useDarkMode } from 'lib/use-dark-mode'
+import { useRouter } from 'next/router'
+import { useSearchParam } from 'react-use'
+
 // import { RightHandDrawer } from './RightHandDrawer'
 
 // -----------------------------------------------------------------------------
@@ -190,7 +188,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
 
   const keys = Object.keys(recordMap?.block || {})
   const block = recordMap?.block?.[keys[0]]?.value
-  console.log(recordMap?.block?.[keys[0]])
 
   // const isRootPage =
   //   parsePageId(block?.id) === parsePageId(site?.rootNotionPageId)
@@ -217,14 +214,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
   }
 
   const title = getBlockTitle(block, recordMap) || site.name
-
-  // console.log('notion page', {
-  //   isDev: config.isDev,
-  //   title,
-  //   pageId,
-  //   rootNotionPageId: site.rootNotionPageId,
-  //   recordMap
-  // })
 
   if (!config.isServer) {
     // add important objects to the window global for easy debugging
