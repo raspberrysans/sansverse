@@ -24,15 +24,6 @@ export default class MyDocument extends Document {
               dangerouslySetInnerHTML={{
                 __html: `
 /** Inlined version of noflash.js from use-dark-mode */
-(function (){
-            const s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-            s1.async=true;
-            s1.src='https://embed.tawk.to/6336cc3954f06e12d897b6a2/1ge70rh1t';
-            s1.charset='UTF-8';
-            s1.setAttribute('crossorigin','*');
-            s0.parentNode.insertBefore(s1,s0);
-          })
-          ();
 ;(function () {
   var storageKey = 'darkMode'
   var classNameDark = 'dark-mode'
