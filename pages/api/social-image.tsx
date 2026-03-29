@@ -8,7 +8,6 @@ import {
   isUrl,
   parsePageId
 } from 'notion-utils'
-import { PageBlock } from 'notion-types'
 
 import { notion } from 'lib/notion-api'
 import { mapImageUrl } from 'lib/map-image-url'
@@ -37,7 +36,7 @@ export default withOGImage<'query', 'id'>({
       const recordMap = await notion.getPage(pageId)
 
       const keys = Object.keys(recordMap?.block || {})
-      const block = recordMap?.block?.[keys[0]]?.value
+      const block = recordMap?.block?.[keys[0]]?.value as any
 
       if (!block) {
         throw new Error('Invalid recordMap for page')
@@ -48,14 +47,13 @@ export default withOGImage<'query', 'id'>({
       const title = getBlockTitle(block, recordMap) || config.name
       const image = mapImageUrl(
         getPageProperty<string>('Social Image', block, recordMap) ||
-          (block as PageBlock).format?.page_cover ||
+          block.format?.page_cover ||
           config.defaultPageCover,
         block
       )
 
       const imageCoverPosition =
-        (block as PageBlock).format?.page_cover_position ??
-        config.defaultPageCoverPosition
+        block.format?.page_cover_position ?? config.defaultPageCoverPosition
       const imageObjectPosition = imageCoverPosition
         ? `center ${(1 - imageCoverPosition) * 100}%`
         : null

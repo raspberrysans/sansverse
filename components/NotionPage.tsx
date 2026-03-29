@@ -3,12 +3,7 @@ import * as config from 'lib/config'
 import * as types from 'lib/types'
 
 // utils
-import {
-  formatDate,
-  getBlockTitle,
-  getPageProperty,
-  parsePageId
-} from 'notion-utils'
+import { formatDate, getBlockTitle, getPageProperty } from 'notion-utils'
 import { getCanonicalPageUrl, mapPageUrl } from 'lib/map-page-url'
 
 import BodyClassName from 'react-body-classname'
