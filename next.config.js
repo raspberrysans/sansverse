@@ -15,7 +15,8 @@ module.exports = withBundleAnalyzer({
       's3.us-west-2.amazonaws.com',
       'transitivebullsh.it',
       'cdn.glitch.com',
-      'images.prismic.io'
+      'images.prismic.io',
+      'i.pinimg.com'
     ],
     formats: ['image/avif', 'image/webp'],
     dangerouslyAllowSVG: true,

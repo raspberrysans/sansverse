@@ -6,7 +6,7 @@ export default siteConfig({
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
-  rootNotionSpaceId: '"4b0aaf2dee0a40b98e454368314c0bf8"',
+  rootNotionSpaceId: '4b0aaf2dee0a40b98e454368314c0bf8',
 
   // basic site info (required)
   name: 'Sansverse by Sans',

@@ -3,7 +3,12 @@ import * as config from 'lib/config'
 import * as types from 'lib/types'
 
 // utils
-import { formatDate, getBlockTitle, getPageProperty } from 'notion-utils'
+import {
+  formatDate,
+  getBlockTitle,
+  getPageProperty,
+  parsePageId
+} from 'notion-utils'
 import { getCanonicalPageUrl, mapPageUrl } from 'lib/map-page-url'
 
 import BodyClassName from 'react-body-classname'
@@ -179,6 +184,9 @@ export const NotionPage: React.FC<types.PageProps> = ({
   // const isDarkMode = true;
 
   const siteMapPageUrl = React.useMemo(() => {
+    if (!site || !recordMap) {
+      return () => '/'
+    }
     const params: any = {}
     if (lite) params.lite = lite
 
@@ -187,7 +195,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
   }, [site, recordMap, lite])
 
   const keys = Object.keys(recordMap?.block || {})
-  const block = recordMap?.block?.[keys[0]]?.value
+  const blockEntry = keys.length > 0 ? recordMap?.block?.[keys[0]] : null
+  const block = blockEntry as any
 
   // const isRootPage =
   //   parsePageId(block?.id) === parsePageId(site?.rootNotionPageId)
