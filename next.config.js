@@ -5,17 +5,25 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 module.exports = withBundleAnalyzer({
   staticPageGenerationTimeout: 300,
+
+  transpilePackages: [
+    'react-notion-x',
+    'notion-client',
+    'notion-utils',
+    'notion-types'
+  ],
+
   images: {
-    domains: [
-      'www.notion.so',
-      'notion.so',
-      'images.unsplash.com',
-      'pbs.twimg.com',
-      'abs.twimg.com',
-      's3.us-west-2.amazonaws.com',
-      'transitivebullsh.it',
-      'cdn.glitch.com',
-      'images.prismic.io'
+    remotePatterns: [
+      { protocol: 'https', hostname: 'www.notion.so' },
+      { protocol: 'https', hostname: 'notion.so' },
+      { protocol: 'https', hostname: 'images.unsplash.com' },
+      { protocol: 'https', hostname: 'pbs.twimg.com' },
+      { protocol: 'https', hostname: 'abs.twimg.com' },
+      { protocol: 'https', hostname: 's3.us-west-2.amazonaws.com' },
+      { protocol: 'https', hostname: 'transitivebullsh.it' },
+      { protocol: 'https', hostname: 'cdn.glitch.com' },
+      { protocol: 'https', hostname: 'images.prismic.io' }
     ],
     formats: ['image/avif', 'image/webp'],
     dangerouslyAllowSVG: true,

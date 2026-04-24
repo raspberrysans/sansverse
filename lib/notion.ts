@@ -1,5 +1,3 @@
-import pMap from 'p-map'
-import pMemoize from 'p-memoize'
 import { ExtendedRecordMap, SearchParams, SearchResults } from 'notion-types'
 import { mergeRecordMaps } from 'notion-utils'
 
@@ -11,39 +9,40 @@ import {
   navigationLinks
 } from './config'
 
-const getNavigationLinkPages = pMemoize(
-  async (): Promise<ExtendedRecordMap[]> => {
-    const navigationLinkPageIds = (navigationLinks || [])
-      .map((link) => link.pageId)
-      .filter(Boolean)
+let navigationLinkPagesPromise: Promise<ExtendedRecordMap[]> | null = null
 
-    if (navigationStyle !== 'default' && navigationLinkPageIds.length) {
-      return pMap(
-        navigationLinkPageIds,
-        async (navigationLinkPageId) =>
-          notion.getPage(navigationLinkPageId, {
-            chunkLimit: 1,
-            fetchMissingBlocks: false,
-            fetchCollections: false,
-            signFileUrls: false
-          }),
-        {
-          concurrency: 4
-        }
-      )
-    }
-
-    return []
+function getNavigationLinkPages(): Promise<ExtendedRecordMap[]> {
+  if (!navigationLinkPagesPromise) {
+    navigationLinkPagesPromise = fetchNavigationLinkPages()
   }
-)
+  return navigationLinkPagesPromise
+}
+
+async function fetchNavigationLinkPages(): Promise<ExtendedRecordMap[]> {
+  const navigationLinkPageIds = (navigationLinks || [])
+    .map((link) => link.pageId)
+    .filter(Boolean)
+
+  if (navigationStyle !== 'default' && navigationLinkPageIds.length) {
+    return Promise.all(
+      navigationLinkPageIds.map((navigationLinkPageId) =>
+        notion.getPage(navigationLinkPageId, {
+          chunkLimit: 1,
+          fetchMissingBlocks: false,
+          fetchCollections: false,
+          signFileUrls: false
+        })
+      )
+    )
+  }
+
+  return []
+}
 
 export async function getPage(pageId: string): Promise<ExtendedRecordMap> {
   let recordMap = await notion.getPage(pageId)
 
   if (navigationStyle !== 'default') {
-    // ensure that any pages linked to in the custom navigation header have
-    // their block info fully resolved in the page record map so we know
-    // the page title, slug, etc.
     const navigationLinkRecordMaps = await getNavigationLinkPages()
 
     if (navigationLinkRecordMaps?.length) {

@@ -17,7 +17,7 @@ import { NotionPageHeader } from './NotionPageHeader'
 import { NotionRenderer } from 'react-notion-x'
 import { Page404 } from './Page404'
 import { PageAside } from './PageAside'
-import { PageBlock } from 'notion-types'
+import { Block, PageBlock } from 'notion-types'
 import { PageHead } from './PageHead'
 import TweetEmbed from 'react-tweet-embed'
 import cs from 'classnames'
@@ -187,7 +187,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
   }, [site, recordMap, lite])
 
   const keys = Object.keys(recordMap?.block || {})
-  const block = recordMap?.block?.[keys[0]]?.value
+  const block = recordMap?.block?.[keys[0]]?.value as Block
 
   // const isRootPage =
   //   parsePageId(block?.id) === parsePageId(site?.rootNotionPageId)
