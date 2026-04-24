@@ -6,7 +6,7 @@ import {
   getPageProperty,
   idToUuid
 } from 'notion-utils'
-import { ExtendedRecordMap } from 'notion-types'
+import { Block, ExtendedRecordMap } from 'notion-types'
 
 import * as config from 'lib/config'
 import { getSiteMap } from 'lib/get-site-map'
@@ -40,7 +40,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
     if (!recordMap) continue
 
     const keys = Object.keys(recordMap?.block || {})
-    const block = recordMap?.block?.[keys[0]]?.value
+    const block = recordMap?.block?.[keys[0]]?.value as Block
     if (!block) continue
 
     const parentPage = getBlockParentPage(block, recordMap)

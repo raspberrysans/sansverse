@@ -5,7 +5,6 @@ import { getAllPagesInSpace } from 'notion-utils'
 import { getCanonicalPageId } from './get-canonical-page-id'
 import { includeNotionIdInUrls } from './config'
 import { notion } from './notion-api'
-import pMemoize from 'p-memoize'
 
 const uuid = !!includeNotionIdInUrls
 
@@ -21,9 +20,18 @@ export async function getSiteMap(): Promise<types.SiteMap> {
   } as types.SiteMap
 }
 
-const getAllPages = pMemoize(getAllPagesImpl, {
-  cacheKey: (...args) => JSON.stringify(args)
-})
+const getAllPagesCache = new Map<string, Promise<Partial<types.SiteMap>>>()
+
+function getAllPages(
+  rootNotionPageId: string,
+  rootNotionSpaceId: string
+): Promise<Partial<types.SiteMap>> {
+  const key = JSON.stringify([rootNotionPageId, rootNotionSpaceId])
+  if (!getAllPagesCache.has(key)) {
+    getAllPagesCache.set(key, getAllPagesImpl(rootNotionPageId, rootNotionSpaceId))
+  }
+  return getAllPagesCache.get(key)!
+}
 
 async function getAllPagesImpl(
   rootNotionPageId: string,
@@ -43,7 +51,8 @@ async function getAllPagesImpl(
     (map, pageId: string) => {
       const recordMap = pageMap[pageId]
       if (!recordMap) {
-        throw new Error(`Error loading page "${pageId}"`)
+        console.warn(`skipping page "${pageId}" — failed to load`)
+        return map
       }
 
       const canonicalPageId = getCanonicalPageId(pageId, recordMap, {
@@ -51,9 +60,7 @@ async function getAllPagesImpl(
       })
 
       if (map[canonicalPageId]) {
-        // you can have multiple pages in different collections that have the same id
-        // TODO: we may want to error if neither entry is a collection page
-        console.warn('error duplicate canonical page id', {
+        console.warn('duplicate canonical page id', {
           canonicalPageId,
           pageId,
           existingPageId: map[canonicalPageId]

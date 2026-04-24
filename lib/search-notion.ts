@@ -1,41 +1,36 @@
-// import ky from 'ky'
-import fetch from 'isomorphic-unfetch'
-import pMemoize from 'p-memoize'
 import ExpiryMap from 'expiry-map'
 
 import { api } from './config'
 import * as types from './types'
 
-export const searchNotion = pMemoize(searchNotionImpl, {
-  cacheKey: (args) => args[0]?.query,
-  cache: new ExpiryMap(10000)
-})
+const cache = new ExpiryMap<string, Promise<types.SearchResults>>(10000)
+
+export function searchNotion(
+  params: types.SearchParams
+): Promise<types.SearchResults> {
+  const key = params?.query ?? ''
+  if (cache.has(key)) return cache.get(key)!
+  const p = searchNotionImpl(params)
+  cache.set(key, p)
+  return p
+}
 
 async function searchNotionImpl(
   params: types.SearchParams
 ): Promise<types.SearchResults> {
-  return fetch(api.searchNotion, {
+  const response = await fetch(api.searchNotion, {
     method: 'POST',
     body: JSON.stringify(params),
     headers: {
       'content-type': 'application/json'
     }
   })
-    .then((res) => {
-      if (res.ok) {
-        return res
-      }
 
-      // convert non-2xx HTTP responses into errors
-      const error: any = new Error(res.statusText)
-      error.response = res
-      return Promise.reject(error)
-    })
-    .then((res) => res.json())
+  if (response.ok) {
+    return response.json()
+  }
 
-  // return ky
-  //   .post(api.searchNotion, {
-  //     json: params
-  //   })
-  //   .json()
+  const error: any = new Error(response.statusText)
+  error.response = response
+  throw error
 }
