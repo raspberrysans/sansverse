@@ -34,7 +34,7 @@
     "expiry-map": "^2.0.0",
     "fathom-client": "^3.4.1",
     "lqip-modern": "^2.0.0",
-    "next": "^15.3.9",
+    "next": "^15.5.29",
     "notion-client": "^7.10.0",
     "notion-types": "^7.10.0",
     "notion-utils": "^7.10.0",
